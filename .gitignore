@@ -4,3 +4,6 @@
 
 ### PHPStorm ###
 .idea
+
+### EditorConfig ###
+.editorconfig

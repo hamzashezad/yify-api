@@ -1,0 +1,48 @@
+.box {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.box h2 {
+  margin: 0 0 10px 0;
+}
+
+.media-left img {
+  display: block;
+  width: 140px;
+  margin-right: 10px;
+  padding: 5px;
+  border: 1px solid #cfcfcf;
+}
+
+.sBox {
+  border: 0;
+}
+
+.sBox img {
+  display: block;
+  width: 80px;
+  padding: 5px;
+  border: 1px solid #cfcfcf;
+}
+
+span.label a {
+  color: #fff;
+  text-decoration: none;
+}
+
+span.label a:hover {
+  text-decoration: none;
+  color: #fff;
+}
+
+.torrents {
+  margin: 10px 0 0 0;
+}
+
+.torrents .btn {
+  display: inline-block;
+  margin-top: 10px;
+}
