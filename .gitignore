@@ -1,3 +1,6 @@
 ### SASS ###
 .sass-cache
 *.css.map
+
+### PHPStorm ###
+.idea
