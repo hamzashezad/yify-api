@@ -11,5 +11,3 @@ $output = curl_exec($c);
 $output = json_decode($output);
 $output = get_object_vars($output);
 $data = get_object_vars($output['data']);
-
-curl_close($c);
