@@ -30,7 +30,7 @@
 
 span.label a {
   color: #fff;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 span.label a:hover {

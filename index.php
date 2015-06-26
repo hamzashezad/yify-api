@@ -36,140 +36,62 @@ include 'upcoming.php';
     <div class="row">
       <div class="col-md-8">
         <h1>Movies</h1>
-        <div class="box media">
-          <div class="media-left">
-            <img src="https://s.ynet.io/assets/images/movies/play_the_game_2009/medium-cover.jpg" alt="play_the_game">
-          </div>
-          <div class="media-body">
-            <h2 class="media-heading page-header">
-              Play the Game
-              <small>2009</small>
-            </h2>
-            <span class="label label-primary">PG-13</span>
-            <span class="label label-default"> <span class="glyphicon glyphicon-time"></span> 105 min</span>
-            <span class="label label-info"> <span class="glyphicon glyphicon-tags"></span> Comedy, Romance</span>
-            <span class="label label-success"> <span class="glyphicon glyphicon-star"></span> 6.7/10</span>
-            <span class="label label-warning"><a href="http://www.imdb.com/title/tt1124388/"> <span class="glyphicon glyphicon-link"></span> IMDb</a></span>
 
-            <div class="row torrents">
-              <div class="col-md-6">
-                <strong>Seeds/Peers: </strong> 697/393 <br>
-                <strong>Size: </strong> 1.64 GB <br>
-                <a class="btn btn-primary" title="S/P: 697/393" href=""><span class="glyphicon glyphicon-download-alt"></span> 1080p</a>
-              </div>
-              <div class="col-md-6">
-                <strong>Seeds/Peers: </strong> 698/681 <br>
-                <strong>Size: </strong> 808.07 MB <br>
-                <a class="btn btn-primary" title="S/P: 698/681" href=""><span class="glyphicon glyphicon-download-alt"></span> 720p</a>
-              </div>
+        <?php foreach ($data['movies'] as $movie) : $movie = get_object_vars($movie); ?>
+          <div class="box media">
+            <div class="media-left">
+              <img src="<?php echo $movie['medium_cover_image'] ?>" alt="<?php echo $movie['slug']; ?>">
             </div>
+            <div class="media-body">
+              <h2 class="media-heading page-header">
+                <?php echo $movie['title']; ?>
+                <small><?php echo $movie['year']; ?></small>
+              </h2>
+              <span class="label label-<?php if ($movie['mpa_rating'] == 'R' || $movie['mpa_rating'] == '18+' || $movie['mpa_rating'] == '18' || $movie['mpa_rating'] == 'R18+') { echo 'danger'; } else { echo 'primary'; } ?>"><?php echo $movie['mpa_rating']; ?></span>
+              <span class="label label-default"> <span class="glyphicon glyphicon-time"></span> <?php echo $movie['runtime']; ?> min</span>
+              <span class="label label-info"> <span class="glyphicon glyphicon-tags"></span> <?php echo implode(', ', $movie['genres']); ?></span>
+              <span class="label label-success"> <span class="glyphicon glyphicon-star"></span> <?php echo $movie['rating']; ?>/10</span>
+              <span class="label label-warning"><a href="http://www.imdb.com/title/<?php echo $movie['imdb_code']; ?>/"> <span class="glyphicon glyphicon-link"></span> IMDb</a></span>
 
-          </div>
-        </div>
+              <div class="row torrents">
 
-        <div class="box media">
-          <div class="media-left">
-            <img src="https://s.ynet.io/assets/images/movies/paper_planes_2014/medium-cover.jpg" alt="paper_planes">
-          </div>
-          <div class="media-body">
-            <h2 class="media-heading page-header">
-              Paper Planes
-              <small>2014</small>
-            </h2>
-            <span class="label label-primary">U</span>
-            <span class="label label-default"> <span class="glyphicon glyphicon-time"></span> 96 min</span>
-            <span class="label label-info"> <span class="glyphicon glyphicon-tags"></span> Family</span>
-            <span class="label label-success"> <span class="glyphicon glyphicon-star"></span> 6.5/10</span>
-            <span class="label label-warning"><a href="http://www.imdb.com/title/tt3328716/"> <span class="glyphicon glyphicon-link"></span> IMDb</a></span>
+                <?php foreach ($movie['torrents'] as $torrents) : $torrents = get_object_vars($torrents); ?>
+                  <div class="col-md-6">
+                    <strong>Seeds/Peers: </strong> <?php echo $torrents['seeds']; ?>/<?php echo $torrents['peers']; ?> <br>
+                    <strong>Size: </strong> <?php echo $torrents['size']; ?> <br>
+                    <a class="btn btn-primary" title="S/P: <?php echo $torrents['seeds']; ?>/<?php echo $torrents['peers']; ?>" href=""><span class="glyphicon glyphicon-download-alt"></span> <?php echo $torrents['quality']; ?></a>
+                  </div>
+                <?php endforeach; ?>
 
-            <div class="row torrents">
-              <div class="col-md-6">
-                <strong>Seeds/Peers: </strong> 6694/4913 <br>
-                <strong>Size: </strong> 1.44 GB <br>
-                <a class="btn btn-primary" title="S/P: 6694/4913" href=""><span class="glyphicon glyphicon-download-alt"></span> 1080p</a>
               </div>
-              <div class="col-md-6">
-                <strong>Seeds/Peers: </strong> 877/1837 <br>
-                <strong>Size: </strong> 754.02 MB <br>
-                <a class="btn btn-primary" title="S/P: 877/1837" href=""><span class="glyphicon glyphicon-download-alt"></span> 720p</a>
-              </div>
+
             </div>
-
           </div>
-        </div>
+        <?php endforeach; ?>
 
       </div>
 
       <div class="col-md-4">
-        <h2>Latest Movies</h2>
+        <h2>Upcoming Movies</h2>
 
-        <div class="sBox media">
-          <div class="media-left">
-            <img src="https://s.ynet.io/assets/images/upcoming/143509435394.jpg" alt="chimes_at_midnight">
+        <?php foreach ($udata['upcoming_movies'] as $upcoming) : $upcoming = get_object_vars($upcoming); ?>
+          <div class="sBox media">
+            <div class="media-left">
+              <img src="<?php echo $upcoming['medium_cover_image']; ?>">
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading page-header">
+                <?php echo $upcoming['title']; ?>
+                <small><?php echo $upcoming['year']; ?></small>
+              </h4>
+              <span class="label label-warning">
+                <a href="http://www.imdb.com/title/<?php echo $upcoming['imdb_code']; ?>/">
+                  <span class="glyphicon glyphicon-link"></span> IMDb
+                </a>
+              </span>
+            </div>
           </div>
-          <div class="media-body">
-            <h4 class="media-heading page-header">
-              Chimes at Midnight
-              <small>1995</small>
-            </h4>
-            <span class="label label-warning">
-              <a href="http://www.imdb.com/title/tt0059012/">
-                <span class="glyphicon glyphicon-link"></span> IMDb
-              </a>
-            </span>
-          </div>
-        </div>
-
-        <div class="sBox media">
-          <div class="media-left">
-            <img src="https://s.ynet.io/assets/images/upcoming/143026599391.jpg" alt="chimes_at_midnight">
-          </div>
-          <div class="media-body">
-            <h4 class="media-heading page-header">
-              The Right Stuff
-              <small>1983</small>
-            </h4>
-            <span class="label label-warning">
-              <a href="http://www.imdb.com/title/tt0086197/">
-                <span class="glyphicon glyphicon-link"></span> IMDb
-              </a>
-            </span>
-          </div>
-        </div>
-
-        <div class="sBox media">
-          <div class="media-left">
-            <img src="https://s.ynet.io/assets/images/upcoming/142908477115.jpg" alt="infected">
-          </div>
-          <div class="media-body">
-            <h4 class="media-heading page-header">
-              Infected
-              <small>2013</small>
-            </h4>
-            <span class="label label-warning">
-              <a href="http://www.imdb.com/title/tt1893415/">
-                <span class="glyphicon glyphicon-link"></span> IMDb
-              </a>
-            </span>
-          </div>
-        </div>
-
-        <div class="sBox media">
-          <div class="media-left">
-            <img src="https://s.ynet.io/assets/images/upcoming/142867091710.jpg" alt="chimes_at_midnight">
-          </div>
-          <div class="media-body">
-            <h4 class="media-heading page-header">
-             To Wong Foo Thanks for Everything, Julie Newmar
-              <small>1995</small>
-            </h4>
-            <span class="label label-warning">
-              <a href="http://www.imdb.com/title/tt0114682/">
-                <span class="glyphicon glyphicon-link"></span> IMDb
-              </a>
-            </span>
-          </div>
-        </div>
+        <?php endforeach; ?>
 
       </div>
     </div>
