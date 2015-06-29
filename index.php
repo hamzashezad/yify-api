@@ -45,7 +45,7 @@ include 'upcoming.php';
             <div class="media-body">
               <h2 class="media-heading page-header">
                 <?php echo $movie['title']; ?>
-                <small><?php echo $movie['year']; ?></small>
+                <small><?php echo $movie['year']; ?> <a class="slug" href="movie.php?id=<?php echo urlencode($movie['id']); ?>">#</a></small>
               </h2>
               <span class="label label-<?php if ($movie['mpa_rating'] == 'R' || $movie['mpa_rating'] == '18+' || $movie['mpa_rating'] == '18' || $movie['mpa_rating'] == 'R18+') { echo 'danger'; } else { echo 'primary'; } ?>"><?php echo $movie['mpa_rating']; ?></span>
               <span class="label label-default"> <span class="glyphicon glyphicon-time"></span> <?php echo $movie['runtime']; ?> min</span>

@@ -6,6 +6,10 @@
   background-color: rgba(0, 0, 0, 0.2);
 }
 
+a.btn {
+  margin-top: 10px;
+}
+
 .box {
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -15,6 +19,16 @@
 
 .box h2 {
   margin: 0 0 10px 0;
+}
+
+a.slug {
+  color: #aaa;
+  transition: color 0.2s ease-in-out;
+}
+
+a.slug:hover {
+  text-decoration: none;
+  color: #333;
 }
 
 .media-left img {
@@ -57,4 +71,12 @@ span.label a:hover {
 
 .col-md-12 > nav {
   text-align: center;
+}
+
+p {
+  margin: 15px 0;
+}
+
+iframe {
+  margin-top: 15px;
 }
