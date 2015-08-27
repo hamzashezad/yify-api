@@ -59,7 +59,7 @@ include 'upcoming.php';
                   <div class="col-md-6">
                     <strong>Seeds/Peers: </strong> <?php echo $torrents['seeds']; ?>/<?php echo $torrents['peers']; ?> <br>
                     <strong>Size: </strong> <?php echo $torrents['size']; ?> <br>
-                    <a class="btn btn-primary" title="S/P: <?php echo $torrents['seeds']; ?>/<?php echo $torrents['peers']; ?>" href=""><span class="glyphicon glyphicon-download-alt"></span> <?php echo $torrents['quality']; ?></a>
+                    <a class="btn btn-primary" title="S/P: <?php echo $torrents['seeds']; ?>/<?php echo $torrents['peers']; ?>" href="<?php echo $torrents['url']; ?>"><span class="glyphicon glyphicon-download-alt"></span> <?php echo $torrents['quality']; ?></a>
                   </div>
                 <?php endforeach; ?>
 
