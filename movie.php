@@ -5,7 +5,7 @@ if (isset($_GET['id'])) {
 
   $c = curl_init();
 
-  curl_setopt($c, CURLOPT_URL, "https://yts.to/api/v2/movie_details.json?movie_id={$id}");
+  curl_setopt($c, CURLOPT_URL, "https://www.yifytorrent.xyz/api/v2/movie_details.json?movie_id={$id}");
 
   curl_setopt($c,  CURLOPT_RETURNTRANSFER, 1);
 
